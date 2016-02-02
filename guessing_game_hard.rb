@@ -1,5 +1,7 @@
 def random_number
-  rand(1..100)
+  rn = (1..100).to_a
+  rn.shuffle!
+  rn[6].to_i
 end
 
 def less_than
