@@ -3,14 +3,21 @@ def random_number
 end
 
 def input
-  random_number
-  n = random_number
+  target = random_number
+  puts "HINT: The number is #{target}"
   array = []
   5.times do
     puts "I've choosen a number between 1 & 100. You have 5 guesses to get it right."
-    array << gets.chomp.to_i
+
+    number = gets.chomp.to_i
+    if number == target
+      puts "You won!"
+      break
+    end
   end
 end
+
+input
 
 # n = random_number
 # array = []
