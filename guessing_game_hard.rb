@@ -6,6 +6,12 @@ def less_than
   choices = ["You're guess is too low.", "Is this your first time guessing?", "Well, you're just shooting from the hip, cowboy."]
   puts choices.sample
 end
+
+def greater_than
+  options = ["You're guess is too high", "You're not even warm.", "Do you relish wrong answers?", "Congrats! You're wrong again."]
+  puts options.sample
+end
+
 def input
   target = random_number
   array = []
@@ -21,7 +27,7 @@ def input
       less_than
       array << number
     elsif number > target
-      puts "You're guess is too high."
+      greater_than
       array << number
     end
   end
