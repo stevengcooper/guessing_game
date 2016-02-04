@@ -14,10 +14,10 @@ def input
       puts "You won!"
       break
     elsif number < target
-      puts "You're guess is too low."
+      puts "Your guess is too low."
       array << number
     elsif number > target
-      puts "You're guess is too high."
+      puts "Your guess is too high."
       array << number
     end
   end
