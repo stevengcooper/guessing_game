@@ -1,7 +1,9 @@
-def random_number(low, high)
-  (low..high)
-  random = (low..high).to_a.shuffle!
-  random[6].to_i
+require 'byebug'
+
+def random_number
+  random = (0..100)
+  random = random.to_a.shuffle!
+  random = random[6].to_i
 end
 
 def snark
@@ -10,27 +12,30 @@ def snark
 end
 
 def input
-  target = random_number(1,100)
-  array = []
+  random = random_number
+  range = (1..100)
+  user_guesses = []
   5.times do
     puts "I've choosen a number between 1 & 100. You have 5 guesses to get it right."
     number = gets.chomp.to_i
-    if array.include?(number) 
+    if range.include?(number)
+      if number == random
+        puts "You won!"
+        break
+      elsif user_guesses.include?(number)
+        puts "That number still doesn't work, genius."
+      elsif number < random
+        puts "Your guess is too low."
+        range = (number..range.last)
+        user_guesses << number
+      else
+        puts "Your guess is too high."
+        range = (range.first..number)
+        user_guesses << number
+      end
+    else
       puts snark
-    elsif number < target
-      puts "Your guess is too low."
-      target = random_number("#{number}".to_i, 100)
-      array << number
-    elsif number > target
-      puts "Your guess is too high."
-      target = random_number(1, "#{number}".to_i )
-      array << number
-    else number == target
-      puts "You won!"
-      break
     end
   end
-  puts "Looks like you're not very good at guessing. Better luck next time."
 end
-
 input
